@@ -5,7 +5,7 @@ dotenv.config();
 
 const kafka = new Kafka({
   clientId: 'order-service-consumer',
-  brokers: process.env.KAFKA_BROKERS.split(',')
+  brokers: ['localhost:9094']
 });
 
 const consumer = kafka.consumer({ groupId: 'order-agent-group' });
