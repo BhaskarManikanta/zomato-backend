@@ -3,12 +3,14 @@ const morgan = require('morgan');
 const rateLimiter =require('./middlewares/rateLimiter')
 const dotenv = require('dotenv');
 const { createProxyMiddleware } = require('http-proxy-middleware');
+const { verifyJWT } = require('./middlewares/auth.js')
 
 dotenv.config();
 const app = express();
 
 
 app.use(rateLimiter)
+app.use(verifyJWT)
 app.use(morgan('dev'));
 
 // USER SERVICE PROXY
